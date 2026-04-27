@@ -1,0 +1,148 @@
+<?php
+/**
+ * PLANTILLA DE WIDGET
+ * 
+ * Este archivo es una plantilla para crear nuevos widgets.
+ * 
+ * INSTRUCCIONES:
+ * 1. Copia este archivo y renómbralo (ej: mi-widget.php)
+ * 2. Cambia el nombre de la clase para que coincida con el archivo
+ *    Ejemplo: mi-widget.php → Mi_Widget
+ * 3. Modifica los métodos según tus necesidades
+ * 4. El widget se registrará automáticamente
+ * 
+ * NOTA: Este archivo está comentado para evitar que se cargue.
+ * Descomenta todo el código cuando crees tu widget.
+ */
+
+/*
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+// Incluir clase base (opcional pero recomendado)
+require_once INTERACTIVE_3D_ELEMENTS_PATH . 'includes/class-i3d-widget-base.php';
+
+class Mi_Nuevo_Widget extends I3D_Widget_Base {
+
+    // Nombre único del widget (slug)
+    public function get_name() {
+        return 'mi-nuevo-widget';
+    }
+
+    // Título que se muestra en el panel de Elementor
+    public function get_title() {
+        return esc_html__('Mi Nuevo Widget', 'interactive-3d-elements');
+    }
+
+    // Icono del widget en el panel
+    public function get_icon() {
+        return 'eicon-animation';
+    }
+
+    // Palabras clave para búsqueda
+    public function get_keywords() {
+        return ['3d', 'widget', 'ejemplo'];
+    }
+
+    // Registrar controles del widget
+    protected function register_controls() {
+        
+        // ===================
+        // SECCIÓN: CONTENIDO
+        // ===================
+        $this->start_controls_section(
+            'content_section',
+            [
+                'label' => esc_html__('Contenido', 'interactive-3d-elements'),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'titulo',
+            [
+                'label' => esc_html__('Título', 'interactive-3d-elements'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'default' => esc_html__('Mi Título', 'interactive-3d-elements'),
+                'label_block' => true,
+            ]
+        );
+
+        $this->add_control(
+            'descripcion',
+            [
+                'label' => esc_html__('Descripción', 'interactive-3d-elements'),
+                'type' => \Elementor\Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Mi descripción aquí...', 'interactive-3d-elements'),
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Agregar controles de efectos 3D (heredados de la clase base)
+        $this->register_3d_effect_controls();
+        
+        // Agregar controles de efectos cyberpunk (heredados de la clase base)
+        $this->register_cyberpunk_effect_controls();
+    }
+
+    // Renderizar el widget en el frontend
+    protected function render() {
+        $settings = $this->get_settings_for_display();
+        
+        // Obtener clases del contenedor
+        $container_classes = $this->get_container_classes($settings);
+        ?>
+        
+        <div class="<?php echo esc_attr($container_classes); ?>">
+            <div class="i3d-canvas">
+                <?php $this->render_trackers(); ?>
+                
+                <div class="i3d-card">
+                    <div class="i3d-card-content">
+                        
+                        <!-- Tu contenido personalizado aquí -->
+                        <h3><?php echo esc_html($settings['titulo']); ?></h3>
+                        <p><?php echo esc_html($settings['descripcion']); ?></p>
+                        
+                        <!-- Renderizar efectos cyberpunk -->
+                        <?php $this->render_cyberpunk_effects($settings); ?>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <?php
+    }
+
+    // Renderizar en el editor de Elementor (JavaScript template)
+    protected function content_template() {
+        ?>
+        <#
+        var effect3dType = settings.effect_3d_type || 'tilt';
+        var effect3dIntensity = settings.effect_3d_intensity ? settings.effect_3d_intensity.size : 10;
+        var containerClasses = 'i3d-container noselect i3d-effect-' + effect3dType + ' i3d-intensity-' + effect3dIntensity;
+        #>
+        
+        <div class="{{{ containerClasses }}}">
+            <div class="i3d-canvas">
+                <# for (var i = 1; i <= 25; i++) { #>
+                <div class="i3d-tracker i3d-tr-{{{ i }}}"></div>
+                <# } #>
+                
+                <div class="i3d-card">
+                    <div class="i3d-card-content">
+                        
+                        <h3>{{{ settings.titulo }}}</h3>
+                        <p>{{{ settings.descripcion }}}</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+}
+*/

@@ -1,0 +1,1080 @@
+/**
+ * Interactive 3D Card - Estilos Cyberpunk
+ * Plugin: Interactive 3D Elements for Elementor
+ */
+
+/* Container principal */
+.i3d-container {
+    position: relative;
+    width: 190px;
+    height: 254px;
+    transition: 200ms;
+}
+
+.i3d-container:active {
+    transform: scale(0.97);
+}
+
+/* Link wrapper */
+.i3d-link-wrapper {
+    display: block;
+    text-decoration: none;
+}
+
+/* Tarjeta principal */
+.i3d-card {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    transition: 700ms;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow:
+        0 0 20px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.i3d-card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Imagen de fondo */
+.i3d-service-image {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Texto del servicio - Oculto por defecto */
+.i3d-service-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    z-index: 30;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(10px);
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.i3d-service-title {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #00ffaa, #00a2ff, #ff00f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 170, 0.7));
+}
+
+.i3d-service-description {
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 85%;
+    opacity: 0.95;
+}
+
+/* Overlay para legibilidad en hover */
+.i3d-service-text::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 5, 15, 0.75);
+    border-radius: 18px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Efectos de hover en imagen y texto */
+.i3d-tracker:hover~.i3d-card .i3d-service-image {
+    transform: scale(1.05);
+    filter: brightness(0.85);
+}
+
+.i3d-tracker:hover~.i3d-card .i3d-service-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.i3d-tracker:hover~.i3d-card .i3d-service-text::after {
+    opacity: 1;
+}
+
+/* Elementos de resplandor */
+.i3d-glowing-elements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.i3d-glow-1,
+.i3d-glow-2,
+.i3d-glow-3 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+            rgba(0, 255, 170, 0.3) 0%,
+            rgba(0, 255, 170, 0) 70%);
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.i3d-glow-1 {
+    top: -20px;
+    left: -20px;
+}
+
+.i3d-glow-2 {
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+}
+
+.i3d-glow-3 {
+    bottom: -20px;
+    left: 30%;
+}
+
+/* Partículas */
+.i3d-card-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.i3d-card-particles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #00ffaa;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 6px 2px rgba(0, 255, 170, 0.8);
+}
+
+.i3d-card-particles span:nth-child(1) {
+    --x: 1;
+    --y: -1;
+    top: 40%;
+    left: 20%;
+}
+
+.i3d-card-particles span:nth-child(2) {
+    --x: -1;
+    --y: -1;
+    top: 60%;
+    right: 20%;
+}
+
+.i3d-card-particles span:nth-child(3) {
+    --x: 0.5;
+    --y: 1;
+    top: 20%;
+    left: 40%;
+}
+
+.i3d-card-particles span:nth-child(4) {
+    --x: -0.5;
+    --y: 1;
+    top: 80%;
+    right: 40%;
+}
+
+.i3d-card-particles span:nth-child(5) {
+    --x: 1;
+    --y: 0.5;
+    top: 30%;
+    left: 60%;
+}
+
+.i3d-card-particles span:nth-child(6) {
+    --x: -1;
+    --y: 0.5;
+    top: 70%;
+    right: 60%;
+}
+
+/* Activar efectos de resplandor en hover */
+.i3d-tracker:hover~.i3d-card .i3d-glowing-elements div {
+    opacity: 1;
+}
+
+.i3d-tracker:hover~.i3d-card .i3d-card-particles span {
+    animation: i3d-particleFloat 2s ease-in-out infinite;
+}
+
+@keyframes i3d-particleFloat {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(calc(var(--x, 0) * 40px), calc(var(--y, 0) * 40px));
+        opacity: 0;
+    }
+}
+
+/* Hover alternativo para partículas (compatibilidad) */
+.i3d-container:hover .i3d-card-particles span {
+    animation: i3d-particleFloat 2s ease-in-out infinite;
+}
+
+.i3d-container:hover .i3d-glowing-elements div {
+    opacity: 1;
+}
+
+/* Pseudo-elemento de resplandor de la tarjeta */
+.i3d-card::before {
+    content: "";
+    background: radial-gradient(circle at center,
+            rgba(0, 255, 170, 0.1) 0%,
+            rgba(0, 162, 255, 0.05) 50%,
+            transparent 100%);
+    filter: blur(20px);
+    opacity: 0;
+    width: 150%;
+    height: 150%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    z-index: 15;
+}
+
+.i3d-tracker:hover~.i3d-card::before {
+    opacity: 1;
+}
+
+/* Trackers para efecto 3D */
+.i3d-tracker {
+    position: absolute;
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+}
+
+.i3d-tracker:hover {
+    cursor: pointer;
+}
+
+.i3d-tracker:hover~.i3d-card {
+    filter: brightness(1.05);
+}
+
+/* Canvas / Grid de trackers */
+.i3d-canvas {
+    perspective: 800px;
+    inset: 0;
+    z-index: 200;
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0;
+}
+
+/* Transformaciones 3D por posición del tracker */
+/* Fila 1 */
+.i3d-tr-1:hover~.i3d-card {
+    transform: rotateX(20deg) rotateY(-10deg);
+}
+
+.i3d-tr-2:hover~.i3d-card {
+    transform: rotateX(20deg) rotateY(-5deg);
+}
+
+.i3d-tr-3:hover~.i3d-card {
+    transform: rotateX(20deg) rotateY(0deg);
+}
+
+.i3d-tr-4:hover~.i3d-card {
+    transform: rotateX(20deg) rotateY(5deg);
+}
+
+.i3d-tr-5:hover~.i3d-card {
+    transform: rotateX(20deg) rotateY(10deg);
+}
+
+/* Fila 2 */
+.i3d-tr-6:hover~.i3d-card {
+    transform: rotateX(10deg) rotateY(-10deg);
+}
+
+.i3d-tr-7:hover~.i3d-card {
+    transform: rotateX(10deg) rotateY(-5deg);
+}
+
+.i3d-tr-8:hover~.i3d-card {
+    transform: rotateX(10deg) rotateY(0deg);
+}
+
+.i3d-tr-9:hover~.i3d-card {
+    transform: rotateX(10deg) rotateY(5deg);
+}
+
+.i3d-tr-10:hover~.i3d-card {
+    transform: rotateX(10deg) rotateY(10deg);
+}
+
+/* Fila 3 */
+.i3d-tr-11:hover~.i3d-card {
+    transform: rotateX(0deg) rotateY(-10deg);
+}
+
+.i3d-tr-12:hover~.i3d-card {
+    transform: rotateX(0deg) rotateY(-5deg);
+}
+
+.i3d-tr-13:hover~.i3d-card {
+    transform: rotateX(0deg) rotateY(0deg);
+}
+
+.i3d-tr-14:hover~.i3d-card {
+    transform: rotateX(0deg) rotateY(5deg);
+}
+
+.i3d-tr-15:hover~.i3d-card {
+    transform: rotateX(0deg) rotateY(10deg);
+}
+
+/* Fila 4 */
+.i3d-tr-16:hover~.i3d-card {
+    transform: rotateX(-10deg) rotateY(-10deg);
+}
+
+.i3d-tr-17:hover~.i3d-card {
+    transform: rotateX(-10deg) rotateY(-5deg);
+}
+
+.i3d-tr-18:hover~.i3d-card {
+    transform: rotateX(-10deg) rotateY(0deg);
+}
+
+.i3d-tr-19:hover~.i3d-card {
+    transform: rotateX(-10deg) rotateY(5deg);
+}
+
+.i3d-tr-20:hover~.i3d-card {
+    transform: rotateX(-10deg) rotateY(10deg);
+}
+
+/* Fila 5 */
+.i3d-tr-21:hover~.i3d-card {
+    transform: rotateX(-20deg) rotateY(-10deg);
+}
+
+.i3d-tr-22:hover~.i3d-card {
+    transform: rotateX(-20deg) rotateY(-5deg);
+}
+
+.i3d-tr-23:hover~.i3d-card {
+    transform: rotateX(-20deg) rotateY(0deg);
+}
+
+.i3d-tr-24:hover~.i3d-card {
+    transform: rotateX(-20deg) rotateY(5deg);
+}
+
+.i3d-tr-25:hover~.i3d-card {
+    transform: rotateX(-20deg) rotateY(10deg);
+}
+
+/* No selección */
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Resplandor de la tarjeta */
+.i3d-card-glare {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(125deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.05) 45%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 55%,
+            rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity 300ms;
+    z-index: 25;
+}
+
+.i3d-card:hover .i3d-card-glare {
+    opacity: 1;
+}
+
+/* Líneas cyber */
+.i3d-cyber-lines span {
+    position: absolute;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(92, 103, 255, 0.2),
+            transparent);
+    z-index: 18;
+}
+
+.i3d-cyber-lines span:nth-child(1) {
+    top: 20%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: i3d-lineGrow 3s linear infinite;
+}
+
+.i3d-cyber-lines span:nth-child(2) {
+    top: 40%;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: right;
+    animation: i3d-lineGrow 3s linear infinite 1s;
+}
+
+.i3d-cyber-lines span:nth-child(3) {
+    top: 60%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: i3d-lineGrow 3s linear infinite 2s;
+}
+
+.i3d-cyber-lines span:nth-child(4) {
+    top: 80%;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: right;
+    animation: i3d-lineGrow 3s linear infinite 1.5s;
+}
+
+@keyframes i3d-lineGrow {
+    0% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+}
+
+/* Elementos de esquina */
+.i3d-corner-elements span {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 2px solid rgba(92, 103, 255, 0.3);
+    z-index: 22;
+    transition: all 0.3s ease;
+}
+
+.i3d-corner-elements span:nth-child(1) {
+    top: 10px;
+    left: 10px;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.i3d-corner-elements span:nth-child(2) {
+    top: 10px;
+    right: 10px;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.i3d-corner-elements span:nth-child(3) {
+    bottom: 10px;
+    left: 10px;
+    border-right: 0;
+    border-top: 0;
+}
+
+.i3d-corner-elements span:nth-child(4) {
+    bottom: 10px;
+    right: 10px;
+    border-left: 0;
+    border-top: 0;
+}
+
+.i3d-card:hover .i3d-corner-elements span {
+    border-color: rgba(92, 103, 255, 0.8);
+    box-shadow: 0 0 10px rgba(92, 103, 255, 0.5);
+}
+
+/* Línea de escaneo */
+.i3d-scan-line {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(92, 103, 255, 0.1),
+            transparent);
+    transform: translateY(-100%);
+    animation: i3d-scanMove 2s linear infinite;
+    z-index: 19;
+}
+
+@keyframes i3d-scanMove {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .i3d-service-title {
+        font-size: 22px;
+    }
+
+    .i3d-service-description {
+        font-size: 12px;
+    }
+}
+
+/* ========================================
+   EFECTOS 3D PERSONALIZABLES
+   ======================================== */
+
+/* Efecto: Sin efecto 3D */
+.i3d-effect-none .i3d-tracker:hover~.i3d-card {
+    transform: none !important;
+}
+
+/* Efecto: Flotar */
+.i3d-effect-float .i3d-tracker:hover~.i3d-card {
+    transform: translateY(-15px) !important;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(0, 255, 170, 0.2);
+}
+
+.i3d-effect-float.i3d-intensity-5 .i3d-tracker:hover~.i3d-card {
+    transform: translateY(-8px) !important;
+}
+
+.i3d-effect-float.i3d-intensity-10 .i3d-tracker:hover~.i3d-card {
+    transform: translateY(-15px) !important;
+}
+
+.i3d-effect-float.i3d-intensity-15 .i3d-tracker:hover~.i3d-card {
+    transform: translateY(-22px) !important;
+}
+
+.i3d-effect-float.i3d-intensity-20 .i3d-tracker:hover~.i3d-card {
+    transform: translateY(-30px) !important;
+}
+
+.i3d-effect-float.i3d-intensity-25 .i3d-tracker:hover~.i3d-card {
+    transform: translateY(-38px) !important;
+}
+
+.i3d-effect-float.i3d-intensity-30 .i3d-tracker:hover~.i3d-card {
+    transform: translateY(-45px) !important;
+}
+
+/* Efecto: Zoom */
+.i3d-effect-zoom .i3d-tracker:hover~.i3d-card {
+    transform: scale(1.1) !important;
+}
+
+.i3d-effect-zoom.i3d-intensity-5 .i3d-tracker:hover~.i3d-card {
+    transform: scale(1.05) !important;
+}
+
+.i3d-effect-zoom.i3d-intensity-10 .i3d-tracker:hover~.i3d-card {
+    transform: scale(1.1) !important;
+}
+
+.i3d-effect-zoom.i3d-intensity-15 .i3d-tracker:hover~.i3d-card {
+    transform: scale(1.15) !important;
+}
+
+.i3d-effect-zoom.i3d-intensity-20 .i3d-tracker:hover~.i3d-card {
+    transform: scale(1.2) !important;
+}
+
+.i3d-effect-zoom.i3d-intensity-25 .i3d-tracker:hover~.i3d-card {
+    transform: scale(1.25) !important;
+}
+
+.i3d-effect-zoom.i3d-intensity-30 .i3d-tracker:hover~.i3d-card {
+    transform: scale(1.3) !important;
+}
+
+/* Efecto: Voltear Horizontal */
+.i3d-effect-flip-x .i3d-canvas {
+    perspective: 1000px;
+}
+
+.i3d-effect-flip-x .i3d-card {
+    transform-style: preserve-3d;
+}
+
+.i3d-effect-flip-x .i3d-tracker:hover~.i3d-card {
+    transform: rotateY(180deg) !important;
+}
+
+.i3d-effect-flip-x.i3d-intensity-5 .i3d-tracker:hover~.i3d-card {
+    transform: rotateY(30deg) !important;
+}
+
+.i3d-effect-flip-x.i3d-intensity-10 .i3d-tracker:hover~.i3d-card {
+    transform: rotateY(60deg) !important;
+}
+
+.i3d-effect-flip-x.i3d-intensity-15 .i3d-tracker:hover~.i3d-card {
+    transform: rotateY(90deg) !important;
+}
+
+.i3d-effect-flip-x.i3d-intensity-20 .i3d-tracker:hover~.i3d-card {
+    transform: rotateY(120deg) !important;
+}
+
+.i3d-effect-flip-x.i3d-intensity-25 .i3d-tracker:hover~.i3d-card {
+    transform: rotateY(150deg) !important;
+}
+
+.i3d-effect-flip-x.i3d-intensity-30 .i3d-tracker:hover~.i3d-card {
+    transform: rotateY(180deg) !important;
+}
+
+/* Efecto: Voltear Vertical */
+.i3d-effect-flip-y .i3d-canvas {
+    perspective: 1000px;
+}
+
+.i3d-effect-flip-y .i3d-card {
+    transform-style: preserve-3d;
+}
+
+.i3d-effect-flip-y .i3d-tracker:hover~.i3d-card {
+    transform: rotateX(180deg) !important;
+}
+
+.i3d-effect-flip-y.i3d-intensity-5 .i3d-tracker:hover~.i3d-card {
+    transform: rotateX(30deg) !important;
+}
+
+.i3d-effect-flip-y.i3d-intensity-10 .i3d-tracker:hover~.i3d-card {
+    transform: rotateX(60deg) !important;
+}
+
+.i3d-effect-flip-y.i3d-intensity-15 .i3d-tracker:hover~.i3d-card {
+    transform: rotateX(90deg) !important;
+}
+
+.i3d-effect-flip-y.i3d-intensity-20 .i3d-tracker:hover~.i3d-card {
+    transform: rotateX(120deg) !important;
+}
+
+.i3d-effect-flip-y.i3d-intensity-25 .i3d-tracker:hover~.i3d-card {
+    transform: rotateX(150deg) !important;
+}
+
+.i3d-effect-flip-y.i3d-intensity-30 .i3d-tracker:hover~.i3d-card {
+    transform: rotateX(180deg) !important;
+}
+
+/* Efecto: Balanceo */
+.i3d-effect-swing .i3d-tracker:hover~.i3d-card {
+    animation: i3d-swing 0.6s ease-in-out !important;
+    transform-origin: top center;
+}
+
+@keyframes i3d-swing {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(15deg);
+    }
+
+    40% {
+        transform: rotate(-10deg);
+    }
+
+    60% {
+        transform: rotate(5deg);
+    }
+
+    80% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.i3d-effect-swing.i3d-intensity-5 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-swing-5 0.6s ease-in-out !important;
+}
+
+.i3d-effect-swing.i3d-intensity-10 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-swing-10 0.6s ease-in-out !important;
+}
+
+.i3d-effect-swing.i3d-intensity-15 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-swing-15 0.6s ease-in-out !important;
+}
+
+.i3d-effect-swing.i3d-intensity-20 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-swing-20 0.6s ease-in-out !important;
+}
+
+.i3d-effect-swing.i3d-intensity-25 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-swing-25 0.6s ease-in-out !important;
+}
+
+.i3d-effect-swing.i3d-intensity-30 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-swing-30 0.8s ease-in-out !important;
+}
+
+@keyframes i3d-swing-5 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(5deg);
+    }
+
+    40% {
+        transform: rotate(-4deg);
+    }
+
+    60% {
+        transform: rotate(2deg);
+    }
+
+    80% {
+        transform: rotate(-2deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes i3d-swing-10 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(10deg);
+    }
+
+    40% {
+        transform: rotate(-8deg);
+    }
+
+    60% {
+        transform: rotate(4deg);
+    }
+
+    80% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes i3d-swing-15 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(15deg);
+    }
+
+    40% {
+        transform: rotate(-12deg);
+    }
+
+    60% {
+        transform: rotate(6deg);
+    }
+
+    80% {
+        transform: rotate(-4deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes i3d-swing-20 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(20deg);
+    }
+
+    40% {
+        transform: rotate(-16deg);
+    }
+
+    60% {
+        transform: rotate(8deg);
+    }
+
+    80% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes i3d-swing-25 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(25deg);
+    }
+
+    40% {
+        transform: rotate(-20deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: rotate(-6deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes i3d-swing-30 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(30deg);
+    }
+
+    40% {
+        transform: rotate(-25deg);
+    }
+
+    60% {
+        transform: rotate(15deg);
+    }
+
+    80% {
+        transform: rotate(-8deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Efecto: Pulso */
+.i3d-effect-pulse .i3d-tracker:hover~.i3d-card {
+    animation: i3d-pulse 0.8s ease-in-out infinite !important;
+}
+
+@keyframes i3d-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(0, 255, 170, 0.6);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+    }
+}
+
+.i3d-effect-pulse.i3d-intensity-5 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-pulse-5 0.8s ease-in-out infinite !important;
+}
+
+.i3d-effect-pulse.i3d-intensity-10 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-pulse-10 0.8s ease-in-out infinite !important;
+}
+
+.i3d-effect-pulse.i3d-intensity-15 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-pulse-15 0.8s ease-in-out infinite !important;
+}
+
+.i3d-effect-pulse.i3d-intensity-20 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-pulse-20 0.8s ease-in-out infinite !important;
+}
+
+.i3d-effect-pulse.i3d-intensity-25 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-pulse-25 0.8s ease-in-out infinite !important;
+}
+
+.i3d-effect-pulse.i3d-intensity-30 .i3d-tracker:hover~.i3d-card {
+    animation: i3d-pulse-30 0.8s ease-in-out infinite !important;
+}
+
+@keyframes i3d-pulse-5 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes i3d-pulse-10 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes i3d-pulse-15 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes i3d-pulse-20 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes i3d-pulse-25 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes i3d-pulse-30 {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Efecto Tilt - Intensidades personalizadas */
+/* Estas se manejan dinámicamente, pero agregamos clases base */
+.i3d-effect-tilt .i3d-card {
+    transition: transform 0.7s ease;
+}
